@@ -1,0 +1,126 @@
+/* komponen.css — kartu, tombol, tabel, gambar, form (Lembar D dan E) */
+
+/* ===== Isi kartu tugas (Lembar D) ===== */
+.kartu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.kartu h3 { color: var(--color-fg); }
+
+.kartu-mk { font-size: var(--text-sm); }
+
+/* Lencana prioritas: bentuk pil dari --radius-full */
+.lencana {
+  align-self: flex-start;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid currentColor;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.lencana-tinggi { color: var(--color-danger); }
+.lencana-sedang { color: var(--color-primary); }
+
+/* ===== E.1 — Form: kolom isian dan tombol ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 28rem;
+  padding: var(--card-pad);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+}
+
+.form-kolom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);           /* jarak label ke isian, seragam */
+}
+
+label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+input, select, textarea {
+  font: inherit;                 /* kolom isian ikut ukuran huruf halaman */
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-fg);
+}
+
+button {
+  font: inherit;
+  align-self: flex-start;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  cursor: pointer;
+}
+
+button:hover { box-shadow: var(--shadow-1); }
+
+/* ===== E.2 — Keadaan fokus (wajib terlihat) ===== */
+/* :focus-visible hanya muncul saat pengguna memakai papan ketik */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ===== E.3 — Keadaan tidak sah dan pesan galat ===== */
+/* Hanya setelah pengguna mengisi sesuatu yang tidak sah */
+input:user-invalid {
+  border-color: var(--color-danger);
+  border-width: 2px;
+}
+
+/* Pesan galat: tersembunyi dulu, tampil saat isian tidak sah */
+.pesan-galat { display: none; color: var(--color-danger); font-size: var(--text-sm); }
+.pesan-galat::before { content: "⚠ "; }   /* ikon: tanda tidak hanya berupa warna */
+.form-kolom:has(input:user-invalid) .pesan-galat { display: block; }
+
+/* ===== Gambar dan keterangannya ===== */
+figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 40rem;
+}
+
+figure img { border-radius: var(--radius-md); }
+
+figcaption { font-size: var(--text-sm); }
+
+/* ===== Tombol pengalih tema (Lembar F) ===== */
+.tombol-tema {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-fg);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Keadaan aktif: kotak centang tersembunyi terpilih */
+.pengalih-tema:checked + .tombol-tema {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* Kotak centangnya tak terlihat, jadi fokus papan ketik ditampilkan pada labelnya */
+.pengalih-tema:focus-visible + .tombol-tema {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}

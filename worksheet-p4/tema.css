@@ -1,0 +1,33 @@
+/* ===== F.1 — Tema gelap mengikuti pengaturan sistem =====
+   Hanya lapis semantik yang diganti; nilai mentahnya ada di tokens.css. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-bg:      var(--gray-900);
+    --color-fg:      var(--gray-200);
+    --color-surface: var(--gray-800);
+    --color-border:  var(--gray-600);
+    /* warna utama dilebarkan ke terang dari token yang sama,
+       jadi mengganti --teal-700 mengubah kedua tema */
+    --color-primary: color-mix(in srgb, var(--teal-700), var(--white) 45%);
+    --color-danger:  var(--red-300);
+    --color-focus:   var(--amber-400);
+    --shadow-1:      var(--shadow-dark);
+  }
+}
+
+/* ===== F.2 — Pengalih tema tanpa JavaScript ===== */
+.pengalih-tema { position: absolute; opacity: 0; pointer-events: none; }
+
+/* Pilihan manual berada SETELAH blok media query, supaya menang. */
+:root:has(#tema:checked) {
+  color-scheme: dark;
+  --color-bg:      var(--gray-900);
+  --color-fg:      var(--gray-200);
+  --color-surface: var(--gray-800);
+  --color-border:  var(--gray-600);
+  --color-primary: color-mix(in srgb, var(--teal-700), var(--white) 45%);
+  --color-danger:  var(--red-300);
+  --color-focus:   var(--amber-400);
+  --shadow-1:      var(--shadow-dark);
+}

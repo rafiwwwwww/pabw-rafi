@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas & Tenggat Saya</title>
+
+  <!-- urutan ini yang benar: token -> dasar -> tata letak -> komponen -> tema -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="komponen.css">
+  <link rel="stylesheet" href="tema.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-baris">
+      <h1>Tugas & Tenggat Saya</h1>
+      <div class="header-kanan">
+        <nav aria-label="Navigasi utama">
+          <ul>
+            <li><a href="#bagian-1">Daftar Tugas</a></li>
+            <li><a href="#bagian-2">Tambah Tugas</a></li>
+            <li><a href="#tentang">Tentang Saya</a></li>
+          </ul>
+        </nav>
+        <input type="checkbox" id="tema" class="pengalih-tema">
+        <label for="tema" class="tombol-tema">Tema gelap</label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="bagian-1">
+      <h2>Daftar Tugas</h2>
+      <p>Berikut daftar tugas kuliah saya beserta mata kuliah dan tenggat waktunya semester ini.</p>
+
+      <ul class="katalog" aria-label="Tugas kuliah dan tenggat waktunya semester ini">
+        <li class="kartu">
+          <h3>Analisis Kebutuhan Teknologi</h3>
+          <p class="kartu-mk">Manajemen Teknologi Informasi</p>
+          <p>Tenggat: <time datetime="2026-09-25">25 September 2026</time></p>
+          <p class="lencana lencana-tinggi">Prioritas Tinggi</p>
+        </li>
+        <li class="kartu">
+          <h3>Laporan Sensor IoT</h3>
+          <p class="kartu-mk">IoT / Wireless Sensor Networks</p>
+          <p>Tenggat: <time datetime="2026-09-28">28 September 2026</time></p>
+          <p class="lencana lencana-sedang">Prioritas Sedang</p>
+        </li>
+        <li class="kartu">
+          <h3>Studi Kasus Etika Profesi</h3>
+          <p class="kartu-mk">Etika Profesi</p>
+          <p>Tenggat: <time datetime="2026-10-02">2 Oktober 2026</time></p>
+          <p class="lencana lencana-sedang">Prioritas Sedang</p>
+        </li>
+        <li class="kartu">
+          <h3>Rencana Bisnis Kewirausahaan</h3>
+          <p class="kartu-mk">Entrepreneurship / Kewirausahaan</p>
+          <p>Tenggat: <time datetime="2026-10-05">5 Oktober 2026</time></p>
+          <p class="lencana lencana-tinggi">Prioritas Tinggi</p>
+        </li>
+      </ul>
+
+      <figure>
+        <img src="tumpukan buku diatas meja.webp" alt="Tumpukan buku dan laptop terbuka di atas meja belajar dengan catatan tugas kuliah" width="640" height="360" loading="lazy">
+        <figcaption>Meja belajar saya saat mengerjakan tugas-tugas kuliah.</figcaption>
+      </figure>
+    </section>
+
+    <section id="bagian-2">
+      <h2>Tambah Tugas</h2>
+      <p>Gunakan form berikut untuk mencatat tugas baru yang harus saya kerjakan.</p>
+
+      <form action="/simpan" method="post">
+        <div class="form-kolom">
+          <label for="nama-tugas">Nama tugas</label>
+          <input type="text" id="nama-tugas" name="nama-tugas" required minlength="3" aria-describedby="galat-nama">
+          <p class="pesan-galat" id="galat-nama">Nama tugas wajib diisi, minimal 3 huruf.</p>
+        </div>
+        <div class="form-kolom">
+          <label for="mata-kuliah">Mata kuliah</label>
+          <input type="text" id="mata-kuliah" name="mata-kuliah" required aria-describedby="galat-mk">
+          <p class="pesan-galat" id="galat-mk">Mata kuliah wajib diisi.</p>
+        </div>
+        <div class="form-kolom">
+          <label for="tenggat">Tenggat</label>
+          <input type="date" id="tenggat" name="tenggat" required aria-describedby="galat-tenggat">
+          <p class="pesan-galat" id="galat-tenggat">Pilih tanggal tenggat tugas.</p>
+        </div>
+        <button type="submit">Simpan</button>
+      </form>
+    </section>
+  </main>
+
+  <footer id="tentang">
+    <p>Rafie Fachrullah Malah · NIM: 23523253 · 2026</p>
+  </footer>
+
+</body>
+</html>
