@@ -1,0 +1,33 @@
+/* ===== C.1 — Reset ringan (box-sizing paling atas) ===== */
+*, *::before, *::after {
+    box-sizing: border-box;      /* width sudah mencakup padding + border */
+  }
+  
+  * { margin: 0; }               /* hapus jarak bawaan; atur sendiri memakai gap */
+  
+  img { max-width: 100%; height: auto; display: block; }
+  
+  /* ===== C.2 — Tipografi ===== */
+  html {
+    font-size: 100%;             /* ikuti pengaturan pengguna, jangan dipatok */
+  }
+  
+  body {
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    font-size: var(--text-md);
+    line-height: 1.6;            /* 1.5-1.7 nyaman untuk teks isi */
+    color: var(--color-fg);
+    background: var(--color-bg);
+    padding: var(--space-4);
+  }
+  
+  h1 { font-size: var(--text-3xl); line-height: 1.15; }
+  h2 { font-size: var(--text-xl);  line-height: 1.25; }
+  h3 { font-size: var(--text-md); }
+  
+  /* Warna khas halaman: judul dan tautan mengikuti warna utama */
+  h1, h2 { color: var(--color-primary); }
+  a      { color: var(--color-primary); }
+  
+  /* Batasi panjang baris supaya mata mudah berpindah baris */
+  main p { max-width: 60ch; }
