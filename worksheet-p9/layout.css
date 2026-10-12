@@ -1,0 +1,107 @@
+/* ===== B.1 — Kerangka halaman: tiga baris grid ===== */
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;   /* kepala, isi, kaki */
+  min-height: 100vh;                   /* cadangan untuk peramban lama */
+  /* body punya padding --space-4 di atas dan bawah; dikurangi agar tidak muncul scroll palsu */
+  min-height: calc(100dvh - 2 * var(--space-4));
+}
+
+/* ===== D.1 — Navbar dalam satu baris ===== */
+header {
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-baris {                  /* <div class="header-baris"> di dalam header */
+  display: flex;
+  align-items: center;           /* sumbu silang: rata tengah */
+  justify-content: space-between; /* sumbu utama: judul kiri, menu kanan */
+  gap: var(--space-4);
+  flex-wrap: wrap;               /* turun baris di layar sempit, jangan meluber */
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;               /* menu turun baris bila ruang habis */
+  gap: var(--space-4);
+  list-style: none;              /* daftar nav tanpa butir */
+  padding: 0;
+}
+
+nav a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+nav a:hover { text-decoration: underline; }
+
+/* ===== B.2 + D.2 — Isi dua kolom: sidebar tetap, konten lentur, area bernama ===== */
+main {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);   /* minmax(0,1fr): kolom tidak dilebarkan isi panjang */
+  grid-template-areas: "sisi utama";
+  align-items: start;
+  gap: var(--section-gap);
+  padding-block: var(--space-6);
+}
+
+#bagian-1 { grid-area: utama; }    /* Daftar Tugas: kolom konten */
+#bagian-2 { grid-area: sisi; }     /* Tambah Tugas: sidebar */
+
+/* Layar sempit: sidebar 16rem + konten tidak muat, jadi ditumpuk satu kolom */
+@media (max-width: 45rem) {
+  main {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "utama"
+      "sisi";
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);           /* jarak judul, paragraf, dan isi bagian */
+}
+
+/* ===== C.1 — Galeri adaptif tanpa media query ===== */
+.katalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-4);
+  list-style: none;              /* daftar kartu tanpa butir */
+  padding: 0;
+}
+
+/* ===== D.1 — Span: kartu pertama selebar dua kolom, hanya bila ruang cukup ===== */
+/* Di satu kolom, span 2 akan membuat kolom bayangan dan meluber. Ambang 55rem = dua kolom galeri
+   (2 x 16rem + gap) ditambah sidebar, gap, dan padding halaman. */
+@media (min-width: 55rem) {
+  .katalog .kartu:first-child { grid-column: span 2; }
+}
+
+.kartu {
+  min-width: 0;                  /* E.2: boleh menyusut, teks membungkus */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: var(--card-pad);
+}
+
+footer {
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-fg);        /* hindari abu pucat yang gagal kontras */
+  font-size: var(--text-sm);
+}
+
+/* Menu dan tombol pengalih tema berdampingan di sisi kanan header */
+.header-kanan {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
