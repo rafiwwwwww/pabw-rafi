@@ -1,0 +1,6 @@
+[
+    { "id": 1, "judul": "Analisis Kebutuhan Teknologi", "mataKuliah": "Manajemen Teknologi Informasi", "kategori": "bisnis", "tenggat": "2026-09-25", "prioritas": "tinggi", "selesai": true },
+    { "id": 2, "judul": "Laporan Sensor IoT", "mataKuliah": "IoT / Wireless Sensor Networks", "kategori": "teknis", "tenggat": "2026-09-28", "prioritas": "sedang", "selesai": true },
+    { "id": 3, "judul": "Studi Kasus Etika Profesi", "mataKuliah": "Etika Profesi", "kategori": "etika", "tenggat": "2026-10-02", "prioritas": "sedang", "selesai": true },
+    { "id": 4, "judul": "Rencana Bisnis Kewirausahaan", "mataKuliah": "Entrepreneurship / Kewirausahaan", "kategori": "bisnis", "tenggat": "2026-10-05", "prioritas": "tinggi", "selesai": false }
+  ]
