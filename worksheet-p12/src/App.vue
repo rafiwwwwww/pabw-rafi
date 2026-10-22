@@ -1,7 +1,70 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <HelloWorld />
+  <div class="page">
+    <header>
+      <div class="header-baris">
+        <h1>Tugas & Tenggat Saya</h1>
+        <div class="header-kanan">
+          <nav aria-label="Navigasi utama">
+            <ul>
+              <li><a href="#bagian-1">Daftar Tugas</a></li>
+              <li><a href="#bagian-2">Tambah Tugas</a></li>
+              <li><a href="#tentang">Tentang Saya</a></li>
+            </ul>
+          </nav>
+          <input type="checkbox" id="tema" class="pengalih-tema">
+          <label for="tema" class="tombol-tema">Tema gelap</label>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="bagian-1">
+        <h2>Daftar Tugas</h2>
+        <p>Berikut daftar tugas kuliah saya beserta mata kuliah dan tenggat waktunya semester ini.</p>
+
+        <div id="filter" role="group" aria-label="Filter kategori tugas">
+          <button type="button" data-kategori="semua">Semua</button>
+          <button type="button" data-kategori="teknis">Teknis</button>
+          <button type="button" data-kategori="bisnis">Bisnis</button>
+          <button type="button" data-kategori="etika">Etika</button>
+          <button type="button" data-kategori="lainnya">Lainnya</button>
+        </div>
+
+        <ul class="katalog" id="daftar" aria-label="Tugas kuliah dan tenggat waktunya semester ini"></ul>
+
+        <figure>
+          <img src="/tumpukan buku diatas meja.webp" alt="Tumpukan buku dan laptop terbuka di atas meja belajar dengan catatan tugas kuliah" width="640" height="360" loading="lazy">
+          <figcaption>Meja belajar saya saat mengerjakan tugas-tugas kuliah.</figcaption>
+        </figure>
+      </section>
+
+      <section id="bagian-2">
+        <h2>Tambah Tugas</h2>
+        <p>Gunakan form berikut untuk mencatat tugas baru yang harus saya kerjakan.</p>
+
+        <form id="form-tugas" action="/simpan" method="post" novalidate>
+          <div class="form-kolom">
+            <label for="nama-tugas">Nama tugas</label>
+            <input type="text" id="nama-tugas" name="nama-tugas" required minlength="3" aria-describedby="galat-nama">
+            <p class="pesan-galat" id="galat-nama">Nama tugas wajib diisi, minimal 3 huruf.</p>
+          </div>
+          <div class="form-kolom">
+            <label for="mata-kuliah">Mata kuliah</label>
+            <input type="text" id="mata-kuliah" name="mata-kuliah" required aria-describedby="galat-mk">
+            <p class="pesan-galat" id="galat-mk">Mata kuliah wajib diisi.</p>
+          </div>
+          <div class="form-kolom">
+            <label for="tenggat">Tenggat</label>
+            <input type="date" id="tenggat" name="tenggat" required aria-describedby="galat-tenggat">
+            <p class="pesan-galat" id="galat-tenggat">Pilih tanggal tenggat tugas.</p>
+          </div>
+          <button type="submit">Simpan</button>
+        </form>
+      </section>
+    </main>
+
+    <footer id="tentang">
+      <p>Rafie Fachrullah Malah · NIM: 23523253 · 2026</p>
+    </footer>
+  </div>
 </template>
